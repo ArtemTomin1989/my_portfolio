@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%if (admin_name.length>0 && admin_surname.length>0) { %>
+    <h1>
+      <%=admin_name%> <br />
+      <%=admin_surname%>
+    </h1>
+    <%} else {%>
+    <h1>нічо не прийшло</h1>
+    <%}%>
+    <!-- так ми приймаємо змінну з серверу -->
+    <a href="/">golovna</a>
+    <ul>
+      <li>users1</li>
+      <li>users2</li>
+      <li>users3</li>
+      <li>users4</li>
+      <li>users5</li>
+      <li>users6</li>
+      <li>users7</li>
+    </ul>
+  </body>
+</html>

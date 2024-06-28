@@ -2,7 +2,7 @@ const express = require("express"); //дістаємо експрес з package
 const app = express(); //присвоюємо змінній виклик експрес
 require("dotenv").config();
 
-app.use(express.static(__dirname + "/views"));
+app.use(express.static(__dirname + "/views")); // папка для фронтенду
 
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
@@ -21,4 +21,17 @@ app.get("/shliah", function (req, res) {
   res.render("login");
 });
 
+app.get("/users-stro4ka", function (req, res) {
+  let user = "kaka";
+  let surname = "b";
+
+  let admin_name = process.env.ADMIN;
+  let admin_surname = process.env.SECOND_NAME;
+
+  if (user === admin_name && surname === admin_surname) {
+    res.render("users", { admin_name, admin_surname });
+  } else {
+    res.render("users", { admin_name: "", admin_surname: "" });
+  }
+});
 app.listen(3000); // запуск сервера на порті 3000
