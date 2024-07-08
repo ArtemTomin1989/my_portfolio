@@ -34,4 +34,19 @@ app.get("/users-stro4ka", function (req, res) {
     res.render("users", { admin_name: "", admin_surname: "" });
   }
 });
+
+app.get("/welcome", function (req, res) {
+  let result = "";
+  let admin_name = process.env.ADMIN;
+  let admin_surname = process.env.SECOND_NAME;
+
+  if (admin_name.length > 4 && admin_surname.length > 4) {
+    result = `${admin_name}, ${admin_surname}`;
+  } else {
+    result = "data is incorrect";
+  }
+
+  res.render("welcome", { result });
+});
+
 app.listen(3000); // запуск сервера на порті 3000
