@@ -49,4 +49,9 @@ app.get("/welcome", function (req, res) {
   res.render("welcome", { result });
 });
 
+app.get("/animals", function (req, res) {
+  let creatures = ["cat", "dog", "mouse", "bird"];
+  res.render("animals", { creatures });
+});
+
 app.listen(3000); // запуск сервера на порті 3000

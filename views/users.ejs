@@ -6,14 +6,14 @@
     <title>Document</title>
   </head>
   <body>
-    <%if (admin_name.length>0 && admin_surname.length>0) { %>
+    <% if (admin_name.length>0 && admin_surname.length>0) { %>
     <h1>
-      <%=admin_name%> <br />
-      <%=admin_surname%>
+      <%= admin_name %> <br />
+      <%= admin_surname %>
     </h1>
-    <%} else {%>
+    <% } else { %>
     <h1>нічо не прийшло</h1>
-    <%}%>
+    <% } %>
     <!-- так ми приймаємо змінну з серверу -->
     <a href="/">golovna</a>
     <ul>
