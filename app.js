@@ -49,9 +49,10 @@ app.get("/welcome", function (req, res) {
   res.render("welcome", { result });
 });
 
-app.get("/animals", function (req, res) {
-  let creatures = ["cat", "dog", "mouse", "bird"];
-  res.render("animals", { creatures });
+app.get("/names", function (req, res) {
+  let people = ["kohn", "bill", "kasandra", "elizabetic"];
+  let new_arr = people.filter((element) => element.length > 4);
+  res.render("names", { new_arr });
 });
 
 app.listen(3000); // запуск сервера на порті 3000
