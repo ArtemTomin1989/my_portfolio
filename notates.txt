@@ -1,3 +1,4 @@
 get - відкриває певну сторінку на шляху / в адресній строці в браузері
 render - відкрити файл html/ejs
 res.render("users", { admin_name, admin_surname }) - відкриття файлу users.ejs і відсилання данних ({ admin_name, admin_surname })
+post - багатофункціональний метод для роботи з даними з FE (обробка певних дій)

@@ -1,6 +1,8 @@
 const express = require("express"); //дістаємо експрес з package.json
 const app = express(); //присвоюємо змінній виклик експрес
 require("dotenv").config();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(express.static(__dirname + "/views")); // папка для фронтенду
 
@@ -53,6 +55,19 @@ app.get("/names", function (req, res) {
   let people = ["kohn", "bill", "kasandra", "elizabetic"];
   let new_arr = people.filter((element) => element.length > 4);
   res.render("names", { new_arr });
+});
+app.post("/login", function (req, res) {
+  let password = req.body.password;
+  let login = req.body.login;
+  let result = "";
+  let photo = req.body.photo;
+  console.log(password, login, photo);
+  if (login.length < 6 && password.length < 6) {
+    result = "дані закороткі";
+  } else {
+    result = `ваш логін ${login} і ваш пароль ${password}`;
+  }
+  return res.render("welcome", { result });
 });
 
 app.listen(3000); // запуск сервера на порті 3000
