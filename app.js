@@ -67,7 +67,13 @@ app.post("/login", function (req, res) {
   } else {
     result = `ваш логін ${login} і ваш пароль ${password}`;
   }
-  return res.render("welcome", { result });
+
+  if (photo.length < 1) {
+    photo =
+      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp";
+  }
+
+  return res.render("welcome", { result, photo });
 });
 
 app.listen(3000); // запуск сервера на порті 3000
