@@ -12,7 +12,15 @@ app.set("view engine", "ejs");
 // '/' - дістати щось з початкової сторінки. req i res - отримання інфи з фронту і відправляння інфи на фронт
 
 app.get("/", function (req, res) {
-  res.render("index"); // "/" - стартова сторінка серверу - http://localhost:3000,
+  res.render("index.ejs"); // "/" - стартова сторінка серверу - http://localhost:3000,
+});
+
+app.get("/login", function (req, res) {
+  res.render("login.ejs");
 });
 
 app.listen(3000); // запуск сервера на порті 3000
+
+console.log(
+  "щоб перейти на сервер клацніть по посиланню через ctrl http://localhost:3000"
+);
