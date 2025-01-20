@@ -19,8 +19,20 @@ app.get("/login", function (req, res) {
   res.render("login.ejs");
 });
 
+app.post("/login", function (req, res) {
+  const email = req.body.email;
+  console.log(email);
+  res.render("result.ejs", { email });
+});
+
+// app.post("/user", function (req, res) {
+//   const user = req.body.user;
+//   console.log(user);
+//   res.render("result.ejs");
+// });
+
 app.listen(3000); // запуск сервера на порті 3000
 
 console.log(
-  "щоб перейти на сервер клацніть по посиланню через ctrl http://localhost:3000"
+  "щоб перейти на сервер клацніть по посиланню через ctrl + лкм http://localhost:3000"
 );
