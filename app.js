@@ -21,15 +21,14 @@ app.get("/login", function (req, res) {
 
 app.post("/login", function (req, res) {
   const email = req.body.email;
-  console.log(email);
-  res.render("result.ejs", { email });
+  const password = req.body.password;
+  res.render("result.ejs", { email, password });
 });
 
-// app.post("/user", function (req, res) {
-//   const user = req.body.user;
-//   console.log(user);
-//   res.render("result.ejs");
-// });
+app.post("/add", function (req, res) {
+  const image = req.body.image;
+  res.render("repository.ejs", { image });
+});
 
 app.listen(3000); // запуск сервера на порті 3000
 

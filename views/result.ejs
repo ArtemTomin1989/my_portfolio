@@ -7,10 +7,18 @@
   </head>
   <body>
     <h1>HELLO</h1>
-    <%= email %>
+    <div><%= email %></div>
     <br />
-    <br />
+    <div><%= password %></div>
     <br />
     <a href="/">повернення на головну сторінку</a>
+    <br />
+    <br />
+    <form action="/add" method="POST">
+      <input type="url" name="image" placeholder="add url of your img" />
+      <br />
+      <br />
+      <button type="submit">send</button>
+    </form>
   </body>
 </html>
