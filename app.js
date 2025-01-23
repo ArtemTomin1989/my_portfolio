@@ -22,6 +22,12 @@ app.get("/login", function (req, res) {
 app.post("/login", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
+
+  if (email === process.env.ADMIN && password === process.env.PASSWORD) {
+    console.log("hello admin");
+  } else {
+    console.log(`hello user ${email}`);
+  }
   res.render("result.ejs", { email, password });
 });
 
@@ -29,6 +35,8 @@ app.post("/add", function (req, res) {
   const image = req.body.image;
   res.render("repository.ejs", { image });
 });
+
+// console.log(process.env.ADMIN, process.env.PASSWORD);
 
 app.listen(3000); // запуск сервера на порті 3000
 
