@@ -1,4 +1,5 @@
 const express = require("express"); //дістаємо експрес з package.json
+const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
@@ -22,11 +23,14 @@ app.get("/login", function (req, res) {
 app.post("/login", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
+  const array = db.users;
 
   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
     console.log("hello admin");
   } else {
-    console.log(`hello user ${email}`);
+    let new_person = { name: email, password: password };
+    array.push(new_person);
+    console.log(array);
   }
   res.render("result.ejs", { email, password });
 });
@@ -36,7 +40,10 @@ app.post("/add", function (req, res) {
   res.render("repository.ejs", { image });
 });
 
-// console.log(process.env.ADMIN, process.env.PASSWORD);
+// for (let i = 0; i < array.length; i++) {
+//   console.log(array[i]);
+// }
+// console.log(db.users[0]); //db - заходимо в файл db.js, users - в масив і [0] вказуємо порядковий номер в масиві.
 
 app.listen(3000); // запуск сервера на порті 3000
 
