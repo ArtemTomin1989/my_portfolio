@@ -20,13 +20,35 @@ app.get("/login", function (req, res) {
   res.render("login.ejs");
 });
 
+// app.post("/login", function (req, res) {
+//   const email = req.body.email;
+//   const password = req.body.password;
+//   const array = db.users;
+
+//   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
+//     console.log("hello admin");
+//   } else {
+//     let new_person = { name: email, password: password };
+//     array.push(new_person);
+//     console.log(array);
+//   }
+//   res.render("result.ejs", { email, password });
+// });
+
 app.post("/login", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
   const array = db.users;
 
   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
-    console.log("hello admin");
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].name === email && array[i].password === password) {
+        console.log("вже є такий користувач");
+      }
+    }
+    let new_admin = { name: email, password: password };
+    array.push(new_admin);
+    console.log("новий юзер -  адмін", array);
   } else {
     let new_person = { name: email, password: password };
     array.push(new_person);
