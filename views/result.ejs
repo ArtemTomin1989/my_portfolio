@@ -11,6 +11,12 @@
     <br />
     <div><%= password %></div>
     <br />
+    <ol>
+      <% array.forEach(item => { %>
+      <li>Email: <%= item.name %>, Password: <%= item.password %></li>
+      <% }); %>
+    </ol>
+    <br />
     <a href="/">повернення на головну сторінку</a>
     <br />
     <br />

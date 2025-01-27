@@ -48,13 +48,12 @@ app.post("/login", function (req, res) {
     }
     let new_admin = { name: email, password: password };
     array.push(new_admin);
-    console.log("новий юзер -  адмін", array);
+    return res.render("result.ejs", { email, password, array });
   } else {
     let new_person = { name: email, password: password };
     array.push(new_person);
-    console.log(array);
+    return res.render("result.ejs", { email, password, array });
   }
-  res.render("result.ejs", { email, password });
 });
 
 app.post("/add", function (req, res) {
