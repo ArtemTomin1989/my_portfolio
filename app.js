@@ -52,6 +52,9 @@ app.post("/login", function (req, res) {
   } else {
     let new_person = { name: email, password: password };
     array.push(new_person);
+    array.forEach((user) => {
+      user.password = user.password.toUpperCase();
+    });
     return res.render("result.ejs", { email, password, array });
   }
 });
@@ -69,5 +72,5 @@ app.post("/add", function (req, res) {
 app.listen(3000); // запуск сервера на порті 3000
 
 console.log(
-  "щоб перейти на сервер клацніть по посиланню через ctrl + лкм http://localhost:3000"
+  "щоб перейти на сервер клацніть по посиланню через ctrl + lbm http://localhost:3000"
 );

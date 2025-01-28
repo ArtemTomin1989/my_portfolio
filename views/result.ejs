@@ -11,11 +11,22 @@
     <br />
     <div><%= password %></div>
     <br />
-    <ol>
-      <% array.forEach(item => { %>
-      <li>Email: <%= item.name %>, Password: <%= item.password %></li>
-      <% }); %>
-    </ol>
+    <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% array.forEach(item => { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.password %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
     <br />
     <a href="/">повернення на головну сторінку</a>
     <br />
