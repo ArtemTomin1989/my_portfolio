@@ -7,13 +7,49 @@
   </head>
   <body>
     <form action="/login" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" />
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
       <br />
       <br />
+      <input
+        type="text"
+        pattern="\d*"
+        name="age"
+        placeholder="enter your age"
+        required
+      />
+      <br />
+      <br />
+      <input type="text" name="job_title" placeholder="enter your job title" />
+      <br />
+      <br />
+      <label for="gender">Select your gender:</label>
+      <select id="gender" name="gender">
+        <option value="" selected disabled>"click to select"</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <br />
+      <br />
+      <label>Choose your gender:</label><br />
+
+      <input type="radio" id="male" name="gender" value="Male" required />
+      <label for="male">Male</label><br />
+
+      <input type="radio" id="female" name="gender" value="Female" />
+      <label for="female">Female</label><br />
+      <br />
+      <br />
+
       <input
         type="password"
         name="password"
         placeholder="Enter your password"
+        required
       />
       <br />
       <br />

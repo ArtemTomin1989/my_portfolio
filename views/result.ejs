@@ -15,13 +15,17 @@
       <thead>
         <tr>
           <th>Email</th>
+          <th>Age</th>
+          <th>Job title</th>
           <th>Password</th>
         </tr>
       </thead>
       <tbody>
         <% array.forEach(item => { %>
         <tr>
-          <td><%= item.name %></td>
+          <td><%= item.email %></td>
+          <td><%= item.age %></td>
+          <td><%= item.job_title %></td>
           <td><%= item.password %></td>
         </tr>
         <% }); %>
