@@ -4,20 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .avatar {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    </style>
   </head>
   <body>
     <h1>HELLO</h1>
-    <div><%= email %></div>
-    <br />
-    <div><%= password %></div>
-    <br />
     <table border="1" cellspacing="0" cellpadding="5">
       <thead>
         <tr>
           <th>Email</th>
           <th>Age</th>
+          <th>Avatar</th>
           <th>Job title</th>
+          <th>Gender</th>
           <th>Password</th>
+          <th>Delete User</th>
         </tr>
       </thead>
       <tbody>
@@ -25,8 +32,17 @@
         <tr>
           <td><%= item.email %></td>
           <td><%= item.age %></td>
+          <td>
+            <% if (item.avatar) { %>
+            <img src="<%= item.avatar %>" alt="Avatar" class="avatar" />
+            <% } else { %> No avatar <% } %>
+          </td>
           <td><%= item.job_title %></td>
+          <td><%= item.gender %></td>
           <td><%= item.password %></td>
+          <form action="/deleted/<%= item.email %>" method="POST">
+            <td><button type="submit">Delete</button></td>
+          </form>
         </tr>
         <% }); %>
       </tbody>

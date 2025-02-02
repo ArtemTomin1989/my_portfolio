@@ -25,25 +25,43 @@ app.post("/login", function (req, res) {
   const age = req.body.age;
   const password = req.body.password;
   const job_title = req.body.job_title;
+  const gender = req.body.gender;
   const avatar = "";
   const array = db.users;
 
   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
     for (let i = 0; i < array.length; i++) {
       if (array[i].email === email && array[i].password === password) {
-        console.log("вже є такий користувач");
+        console.log("вже є такий адмін");
+        return res.render("result.ejs", { array });
       }
     }
     let new_admin = { email: email, password: password };
     array.push(new_admin);
-    return res.render("result.ejs", { email, password, array });
+    return res.render("result.ejs", { array });
   } else {
-    let new_person = { email: email, password: password };
+    let new_person = {
+      email: email,
+      age: age,
+      avatar: avatar,
+      job_title: job_title,
+      gender: gender,
+      password: password,
+    };
+    for (let i = 0; i < array.length; i++) {
+      if (
+        array[i].email === new_person.email &&
+        array[i].password === new_person.password
+      ) {
+        console.log("вже є такий користувач");
+      }
+      return res.render("result.ejs", { array });
+    }
     array.push(new_person);
     array.forEach((user) => {
       user.password = user.password.toUpperCase();
     });
-    return res.render("result.ejs", { email, password, array });
+    return res.render("result.ejs", { array });
   }
 });
 
