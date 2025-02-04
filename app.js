@@ -1,6 +1,7 @@
 const express = require("express"); //дістаємо експрес з package.json
 const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
+const array = db.users;
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -27,7 +28,6 @@ app.post("/login", function (req, res) {
   const job_title = req.body.job_title;
   const gender = req.body.gender;
   const avatar = "";
-  const array = db.users;
 
   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
     for (let i = 0; i < array.length; i++) {
@@ -49,13 +49,10 @@ app.post("/login", function (req, res) {
       password: password,
     };
     for (let i = 0; i < array.length; i++) {
-      if (
-        array[i].email === new_person.email &&
-        array[i].password === new_person.password
-      ) {
+      if (array[i].email === new_person.email) {
         console.log("вже є такий користувач");
+        return res.render("result.ejs", { array });
       }
-      return res.render("result.ejs", { array });
     }
     array.push(new_person);
     array.forEach((user) => {
@@ -68,6 +65,17 @@ app.post("/login", function (req, res) {
 app.post("/add", function (req, res) {
   const image = req.body.image;
   res.render("repository.ejs", { image });
+});
+
+app.post("/deleted/:email", function (req, res) {
+  const email = req.params.email;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].email === email) {
+      array.splice(i, 1);
+    }
+  }
+  console.log("Deleted user with email:", email);
+  return res.render("result.ejs", { array });
 });
 
 // for (let i = 0; i < array.length; i++) {

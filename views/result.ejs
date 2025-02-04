@@ -25,6 +25,7 @@
           <th>Gender</th>
           <th>Password</th>
           <th>Delete User</th>
+          <th>Edit User</th>
         </tr>
       </thead>
       <tbody>
@@ -42,6 +43,9 @@
           <td><%= item.password %></td>
           <form action="/deleted/<%= item.email %>" method="POST">
             <td><button type="submit">Delete</button></td>
+          </form>
+          <form action="/edited/<%= item.email %>" method="POST">
+            <td><button type="submit">Edit</button></td>
           </form>
         </tr>
         <% }); %>
