@@ -67,6 +67,7 @@ app.post("/add", function (req, res) {
   res.render("repository.ejs", { image });
 });
 
+
 app.post("/deleted/:email", function (req, res) {
   const email = req.params.email;
   for (let i = 0; i < array.length; i++) {
@@ -77,6 +78,23 @@ app.post("/deleted/:email", function (req, res) {
   console.log("Deleted user with email:", email);
   return res.render("result.ejs", { array });
 });
+
+
+app.post("/edited/:email", function (req, res) {
+  const email = req.params.email;         
+  const newAvatar = req.body.new_avatar;    
+
+  
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].email === email) {
+      console.log("Новий URL аватара для користувача " + email + ": " + newAvatar);
+      return res.send("Новий URL аватара отримано та відображено в консолі.");
+    }
+  }
+
+  return res.status(404).send("Користувача не знайдено");
+});
+
 
 // for (let i = 0; i < array.length; i++) {
 //   console.log(array[i]);
