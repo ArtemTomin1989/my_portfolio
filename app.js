@@ -72,6 +72,7 @@ app.post("/deleted/:email", function (req, res) {
   for (let i = 0; i < array.length; i++) {
     if (array[i].email === email) {
       array.splice(i, 1);
+      return res.render("result.ejs", { array });
     }
   }
   console.log("Deleted user with email:", email);
@@ -90,6 +91,23 @@ app.post("/edited/:email", function (req, res) {
   }
 
   return res.render("result.ejs", { array });
+});
+
+app.post("/edit_pass/:password", function (req, res) {
+  const password = req.params.password;
+  const new_pass = req.body.new_password;
+  const job_title = req.body.job_title;
+
+  console.log("Job Title:", job_title);
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].password === password) {
+      array[i].password = new_pass;
+      break;
+    }
+  }
+
+  res.render("result.ejs", { array });
 });
 
 // for (let i = 0; i < array.length; i++) {

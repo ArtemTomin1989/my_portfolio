@@ -25,7 +25,8 @@
           <th>Gender</th>
           <th>Password</th>
           <th>Delete User</th>
-          <th>Edit User</th>
+          <th>Edit Avatar</th>
+          <th>Edit Password</th>
         </tr>
       </thead>
       <tbody>
@@ -41,15 +42,33 @@
           <td><%= item.job_title %></td>
           <td><%= item.gender %></td>
           <td><%= item.password %></td>
-          <form action="/deleted/<%= item.email %>" method="POST">
-            <td><button type="submit">Delete</button></td>
-          </form>
+          <td>
+            <form action="/deleted/<%= item.email %>" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
           <td>
             <form action="/edited/<%= item.email %>" method="POST">
               <input
                 type="url"
                 name="new_avatar"
                 placeholder="New avatar URL"
+                required
+              />
+              <button type="submit">Edit</button>
+            </form>
+          </td>
+          <td>
+            <form action="/edit_pass/<%= item.password %>" method="POST">
+              <input
+                type="hidden"
+                name="job_title"
+                value="<%= item.job_title %>"
+              />
+              <input
+                type="password"
+                name="new_password"
+                placeholder="enter your new password"
                 required
               />
               <button type="submit">Edit</button>
