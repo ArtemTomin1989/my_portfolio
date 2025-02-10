@@ -96,18 +96,18 @@ app.post("/edited/:email", function (req, res) {
 app.post("/edit_pass/:password", function (req, res) {
   const password = req.params.password;
   const new_pass = req.body.new_password;
-  const job_title = req.body.job_title;
-
-  console.log("Job Title:", job_title);
+  const new_job_title = req.body.job_title;
+  const correct_age = req.body.age;
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].password === password) {
       array[i].password = new_pass;
-      break;
+      array[i].job_title = new_job_title;
+      array[i].age = correct_age;
     }
   }
 
-  res.render("result.ejs", { array });
+  return res.render("result.ejs", { array });
 });
 
 // for (let i = 0; i < array.length; i++) {

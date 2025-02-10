@@ -61,14 +61,26 @@
           <td>
             <form action="/edit_pass/<%= item.password %>" method="POST">
               <input
-                type="hidden"
+                type="text"
                 name="job_title"
                 value="<%= item.job_title %>"
+                required
               />
               <input
                 type="password"
                 name="new_password"
                 placeholder="enter your new password"
+                value="<%= item.password %>"
+                required
+              />
+              <input
+                type="text"
+                pattern="\d*"
+                name="age"
+                min="18"
+                max="100"
+                placeholder="edit age"
+                value="<%= item.age %>"
                 required
               />
               <button type="submit">Edit</button>
