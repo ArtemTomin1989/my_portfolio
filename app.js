@@ -28,6 +28,7 @@ app.post("/login", function (req, res) {
   const job_title = req.body.job_title;
   const gender = req.body.gender;
   const avatar = "";
+  const description = req.body.description;
 
   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
     for (let i = 0; i < array.length; i++) {
@@ -45,6 +46,7 @@ app.post("/login", function (req, res) {
       age: age,
       avatar: avatar,
       job_title: job_title,
+      description: description,
       gender: gender,
       password: password,
     };
