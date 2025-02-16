@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <style>
+      .container {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+      }
+      .avatar {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #333;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Profile</h1>
+      <% if (user.avatar) { %>
+      <img src="<%= user.avatar %>" alt="Avatar" class="avatar" />
+      <% } else { %>
+      <p>No avatar</p>
+      <% } %>
+
+      <table>
+        <tr>
+          <th>Email</th>
+          <td><%= user.email %></td>
+        </tr>
+        <tr>
+          <th>Age</th>
+          <td><%= user.age %></td>
+        </tr>
+        <tr>
+          <th>Job Title</th>
+          <td><%= user.job_title %></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td><%= user.description %></td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td><%= user.gender %></td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td><%= user.password %></td>
+        </tr>
+      </table>
+
+      <br />
+      <a href="/login">Back to Home</a>
+    </div>
+  </body>
+</html>

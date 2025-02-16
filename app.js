@@ -112,6 +112,19 @@ app.post("/edit_pass/:password", function (req, res) {
   return res.render("result.ejs", { array });
 });
 
+app.get("/user/:email", function (req, res) {
+  const email = req.params.email;
+  let user = null;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].email === email) {
+      user = array[i];
+    }
+  }
+
+  res.render("user.ejs", { user });
+});
+
 // for (let i = 0; i < array.length; i++) {
 //   console.log(array[i]);
 // }
