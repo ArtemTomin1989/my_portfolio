@@ -14,11 +14,11 @@ app.set("view engine", "ejs");
 // '/' - дістати щось з початкової сторінки. req i res - отримання інфи з фронту і відправляння інфи на фронт
 
 app.get("/", function (req, res) {
-  res.render("index.ejs"); // "/" - стартова сторінка серверу - http://localhost:3000,
+  return res.render("index.ejs"); // "/" - стартова сторінка серверу - http://localhost:3000,
 });
 
 app.get("/login", function (req, res) {
-  res.render("login.ejs");
+  return res.render("login.ejs");
 });
 
 app.post("/login", function (req, res) {
@@ -66,7 +66,7 @@ app.post("/login", function (req, res) {
 
 app.post("/add", function (req, res) {
   const image = req.body.image;
-  res.render("repository.ejs", { image });
+  return res.render("repository.ejs", { image });
 });
 
 app.post("/deleted/:email", function (req, res) {
@@ -115,14 +115,31 @@ app.post("/edit_pass/:password", function (req, res) {
 app.get("/user/:email", function (req, res) {
   const email = req.params.email;
   let user = null;
-
   for (let i = 0; i < array.length; i++) {
     if (array[i].email === email) {
       user = array[i];
     }
   }
 
-  res.render("user.ejs", { user });
+  return res.render("user.ejs", { user });
+});
+
+app.get("/result", function (req, res) {
+  return res.render("result.ejs", { array });
+});
+
+app.post("/change_description/:email", function (req, res) {
+  const email = req.params.email;
+  const new_description = req.body.changed_description;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].email === email) {
+      array[i].description = new_description;
+      return res.render("result.ejs", { array });
+    }
+  }
+
+  return res.render("result.ejs", { array });
 });
 
 // for (let i = 0; i < array.length; i++) {

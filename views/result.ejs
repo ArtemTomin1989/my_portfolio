@@ -49,6 +49,20 @@
                 <a href="/user/<%= item.email %>">Read More</a>
               </button>
             </div>
+            <div>
+              <form
+                action="/change_description/<%= item.email %>"
+                method="POST"
+              >
+                <input
+                  type="text"
+                  name="changed_description"
+                  placeholder="Cnange your description"
+                  required
+                />
+                <button type="submit">Change description</button>
+              </form>
+            </div>
           </td>
           <td><%= item.gender %></td>
           <td><%= item.password %></td>
