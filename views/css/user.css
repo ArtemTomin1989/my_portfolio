@@ -1,0 +1,94 @@
+/* Оголошення кольорової палітри через CSS-перемінні */
+:root {
+  --primary-color: #2d9cdb;
+  --primary-dark: #2779bd;
+  --bg-color: #f7f7f7;
+  --text-color: #333;
+  --border-color: #e0e0e0;
+}
+
+/* Скидання базових стилів */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+}
+
+/* Стиль контейнера */
+.container {
+  width: 50%;
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Заголовок */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+/* Аватар */
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* Таблиця */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+table th {
+  background: var(--primary-color);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Змінюємо фон кожного другого рядка таблиці для кращої читабельності */
+table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* Стиль посилання "Back" */
+a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+a:hover {
+  background: var(--primary-dark);
+}
