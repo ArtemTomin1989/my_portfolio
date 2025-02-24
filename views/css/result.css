@@ -1,4 +1,4 @@
-/* Оголошення кольорової палітри через CSS-перемінні */
+
 :root {
   --primary-color: #2d9cdb;
   --primary-dark: #2779bd;
@@ -10,7 +10,7 @@
   --hover-bg: #f0f0f0;
 }
 
-/* Загальні стилі та скидання */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,7 +24,7 @@ body {
   padding: 20px;
 }
 
-/* Заголовок */
+
 h1 {
   text-align: center;
   margin-bottom: 30px;
@@ -33,7 +33,7 @@ h1 {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Стиль таблиці */
+
 table {
   width: 100%;
   border-collapse: separate;
@@ -76,7 +76,7 @@ table tbody td {
   font-size: 0.9rem;
 }
 
-/* Стиль для аватара */
+
 .avatar {
   width: 50px;
   height: 50px;
@@ -85,9 +85,9 @@ table tbody td {
   border: 2px solid var(--primary-color);
 }
 
-/* Стиль для textarea (опису) */
+
 textarea {
-  resize: none; /* Заборона зміни розміру */
+  resize: none; 
   width: 100%;
   min-height: 80px;
   padding: 10px;
@@ -105,7 +105,7 @@ textarea:focus {
   outline: none;
 }
 
-/* Стиль кнопок */
+
 button {
   background: var(--secondary-color);
   border: none;
@@ -121,18 +121,18 @@ button:hover {
   background: var(--secondary-dark);
 }
 
-/* Посилання всередині кнопок */
+
 button a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Стилізація форм всередині таблиці */
+
 table form {
   margin: 5px 0;
 }
 
-/* Стиль нижньої форми (наприклад, додавання зображення) */
+
 form[action="/add"] {
   text-align: center;
   margin-top: 20px;

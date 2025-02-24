@@ -2,11 +2,21 @@ const express = require("express"); //дістаємо експрес з package
 const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
 const array = db.users;
+const mongoose = require("mongoose");
+const port = process.env.PORT || 3000;
 require("dotenv").config();
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(__dirname + "/views")); // папка для фронтенду
+// app.use(
+//   session({
+//     secret: `${process.env.DB_USERNAME}`,
+//     resave: false,
+//     saveUninitialized: true,
+//   })
+// );
 
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
@@ -147,8 +157,22 @@ app.post("/change_description/:email", function (req, res) {
 // }
 // console.log(db.users[0]); //db - заходимо в файл db.js, users - в масив і [0] вказуємо порядковий номер в масиві.
 
-app.listen(3000); // запуск сервера на порті 3000
+// app.listen(3000); // запуск сервера на порті
 
-console.log(
-  "щоб перейти на сервер клацніть по посиланню через ctrl + lbm http://localhost:3000"
-);
+// console.log(
+//   "щоб перейти на сервер клацніть по посиланню через ctrl + lbm http://localhost:3000"
+// );
+
+const start = async () => {
+  try {
+    await mongoose.connect(`${process.env.DB_URL}`);
+
+    app.listen(port, () => {
+      console.log(`Сервер запущено на порту ${port}\nhttp://localhost:${port}`);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+start();

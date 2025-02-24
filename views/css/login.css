@@ -55,7 +55,7 @@ form textarea {
   min-height: 80px;
 }
 
-/* Стиль для підписів до радіо кнопок та інших label */
+
 form label {
   font-size: 1rem;
   margin-bottom: 5px;
@@ -63,13 +63,13 @@ form label {
   color: var(--text-color);
 }
 
-/* Стиль радіо кнопок */
+
 form input[type="radio"] {
   margin-right: 5px;
   vertical-align: middle;
 }
 
-/* Стиль кнопки */
+
 form button {
   width: 100%;
   padding: 10px;
@@ -86,7 +86,7 @@ form button:hover {
   background: var(--primary-dark);
 }
 
-/* Стиль посилання для повернення */
+
 a {
   display: inline-block;
   margin-top: 20px;

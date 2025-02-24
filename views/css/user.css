@@ -1,4 +1,4 @@
-/* Оголошення кольорової палітри через CSS-перемінні */
+
 :root {
   --primary-color: #2d9cdb;
   --primary-dark: #2779bd;
@@ -7,7 +7,7 @@
   --border-color: #e0e0e0;
 }
 
-/* Скидання базових стилів */
+
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +21,7 @@ body {
   padding: 20px;
 }
 
-/* Стиль контейнера */
+
 .container {
   width: 50%;
   max-width: 600px;
@@ -33,14 +33,13 @@ body {
   text-align: center;
 }
 
-/* Заголовок */
+
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: var(--primary-color);
 }
 
-/* Аватар */
 .avatar {
   width: 150px;
   height: 150px;
@@ -50,7 +49,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Таблиця */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -72,12 +70,10 @@ table th {
   letter-spacing: 0.05em;
 }
 
-/* Змінюємо фон кожного другого рядка таблиці для кращої читабельності */
 table tr:nth-child(even) {
   background: #f9f9f9;
 }
 
-/* Стиль посилання "Back" */
 a {
   display: inline-block;
   margin-top: 20px;
