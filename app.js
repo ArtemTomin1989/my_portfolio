@@ -1,4 +1,5 @@
 const express = require("express"); //дістаємо експрес з package.json
+const db_mon = require("./models/User");
 const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
 const array = db.users;
@@ -164,15 +165,13 @@ app.post("/change_description/:email", function (req, res) {
 // );
 
 const start = async () => {
-  try {
-    await mongoose.connect(`${process.env.DB_URL}`);
+  await mongoose.connect(`${process.env.DB_URL}`);
 
-    app.listen(port, () => {
-      console.log(`Сервер запущено на порту ${port}\nhttp://localhost:${port}`);
-    });
-  } catch (e) {
-    console.log(e);
-  }
+  app.listen(port);
+
+  console.log(
+    `Сервер запущено на порту ${port}, клік на \nhttp://localhost:${port}`
+  );
 };
 
 start();
