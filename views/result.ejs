@@ -30,9 +30,17 @@
           <td><%= item.age %></td>
           <td>
             <% if (item.avatar) { %>
-            <img src="<%= item.avatar %>" alt="Avatar" class="avatar" />
+            <form action="/user/<%= item.email %>" method="GET">
+              <button
+                type="submit"
+                style="border: none; background: none; padding: 0"
+              >
+                <img src="<%= item.avatar %>" alt="Avatar" class="avatar" />
+              </button>
+            </form>
             <% } else { %> No avatar <% } %>
           </td>
+
           <td><%= item.job_title %></td>
           <td>
             <div>

@@ -1,11 +1,11 @@
+require("dotenv").config();
+const port = process.env.PORT;
 const express = require("express"); //дістаємо експрес з package.json
 const db_mon = require("./models/User");
 const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
 const array = db.users;
 const mongoose = require("mongoose");
-const port = process.env.PORT || 3000;
-require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -170,7 +170,7 @@ const start = async () => {
   app.listen(port);
 
   console.log(
-    `Сервер запущено на порту ${port}, клік на \nhttp://localhost:${port}`
+    `Сервер запущено на порту ${port}, клік на http://localhost:${port}`
   );
 };
 

@@ -7,7 +7,21 @@ const userSchema = new Schema({
   age: {
     type: Number,
   },
-  // вдома дописати
+  avatar: {
+    type: String,
+  },
+  job_title: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  gender: {
+    type: String,
+  },
+  password: {
+    type: String,
+  },
 });
 
 module.exports = model("userSchema", userSchema);
