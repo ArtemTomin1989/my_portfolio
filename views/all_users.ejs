@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Усі користувачі</title>
+    <link rel="stylesheet" href="/css/all_users.css" />
+  </head>
+  <body>
+    <h1>Список усіх користувачів</h1>
+    <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Вік</th>
+          <th>Робота</th>
+          <th>Опис</th>
+          <th>Стать</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(function(user) { %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.age %></td>
+          <td><%= user.job_title %></td>
+          <td><%= user.description %></td>
+          <td><%= user.gender %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <br />
+    <a href="/">На головну</a>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,12 +1,14 @@
 require("dotenv").config();
-const port = process.env.PORT;
+
 const express = require("express"); //дістаємо експрес з package.json
-const db_mon = require("./models/User");
+const mongoose = require("mongoose");
+const port = process.env.PORT;
+const db_user = require("./models/User");
 const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
 const array = db.users;
-const mongoose = require("mongoose");
 
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -35,11 +37,11 @@ app.get("/login", function (req, res) {
 app.post("/login", function (req, res) {
   const email = req.body.email;
   const age = req.body.age;
-  const password = req.body.password;
-  const job_title = req.body.job_title;
-  const gender = req.body.gender;
   const avatar = "";
+  const job_title = req.body.job_title;
   const description = req.body.description;
+  const gender = req.body.gender;
+  const password = req.body.password;
 
   if (email === process.env.ADMIN && password === process.env.PASSWORD) {
     for (let i = 0; i < array.length; i++) {
@@ -151,6 +153,41 @@ app.post("/change_description/:email", function (req, res) {
   }
 
   return res.render("result.ejs", { array });
+});
+
+app.get("/add_new_user", function (req, res) {
+  return res.render("new_user.ejs");
+});
+
+app.post("/add_new_user", async function (req, res) {
+  const { email, age, avatar, job_title, description, gender, password } =
+    req.body;
+
+  const new_person = new db_user({
+    email,
+    age,
+    avatar,
+    job_title,
+    description,
+    gender,
+    password,
+  });
+
+  await new_person.save();
+
+  console.log(email);
+
+  return res.redirect("/all_users");
+});
+
+app.get("/all_users", async function (req, res) {
+  try {
+    const users = await db_user.find();
+    return res.render("all_users.ejs", { users });
+  } catch (error) {
+    console.error("Помилка отримання користувачів:", error);
+    return res.status(500).send("Помилка сервера");
+  }
 });
 
 // for (let i = 0; i < array.length; i++) {
