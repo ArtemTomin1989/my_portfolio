@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <% users.forEach(function(user) { %>
+        <% if (users.length > 0) { %> <% users.forEach(function(user) { %>
         <tr>
           <td><%= user.email %></td>
           <td><%= user.age %></td>
@@ -27,7 +27,7 @@
           <td><%= user.description %></td>
           <td><%= user.gender %></td>
         </tr>
-        <% }); %>
+        <% }); %> <%} else { %> No users yet <%} %>
       </tbody>
     </table>
     <br />

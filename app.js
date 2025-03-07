@@ -8,18 +8,11 @@ const db = require("./db"); //звертаємося до файлу бази д
 const app = express(); //присвоюємо змінній виклик експрес
 const array = db.users;
 
-app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(__dirname + "/views")); // папка для фронтенду
-// app.use(
-//   session({
-//     secret: `${process.env.DB_USERNAME}`,
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
+app.use(express.static("public"));
+app.use(express.static(__dirname + "views")); // папка для фронтенду
 
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
@@ -163,6 +156,12 @@ app.post("/add_new_user", async function (req, res) {
   const { email, age, avatar, job_title, description, gender, password } =
     req.body;
 
+  const user = await db_user.findOne({ email });
+  if (user) {
+    console.log("такий дядько вже існує");
+    return res.redirect("/all_users");
+  }
+
   const new_person = new db_user({
     email,
     age,
@@ -175,31 +174,14 @@ app.post("/add_new_user", async function (req, res) {
 
   await new_person.save();
 
-  console.log(email);
-
   return res.redirect("/all_users");
 });
 
 app.get("/all_users", async function (req, res) {
-  try {
-    const users = await db_user.find();
-    return res.render("all_users.ejs", { users });
-  } catch (error) {
-    console.error("Помилка отримання користувачів:", error);
-    return res.status(500).send("Помилка сервера");
-  }
+  const users = await db_user.find(); //Використовуючи find(), ти можеш отримати всіх користувачів із бази даних.
+
+  return res.render("all_users.ejs", { users });
 });
-
-// for (let i = 0; i < array.length; i++) {
-//   console.log(array[i]);
-// }
-// console.log(db.users[0]); //db - заходимо в файл db.js, users - в масив і [0] вказуємо порядковий номер в масиві.
-
-// app.listen(3000); // запуск сервера на порті
-
-// console.log(
-//   "щоб перейти на сервер клацніть по посиланню через ctrl + lbm http://localhost:3000"
-// );
 
 const start = async () => {
   await mongoose.connect(`${process.env.DB_URL}`);
