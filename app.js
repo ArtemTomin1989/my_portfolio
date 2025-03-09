@@ -160,19 +160,19 @@ app.post("/add_new_user", async function (req, res) {
   if (user) {
     console.log("такий дядько вже існує");
     return res.redirect("/all_users");
+  } else {
+    const new_person = new db_user({
+      email,
+      age,
+      avatar,
+      job_title,
+      description,
+      gender,
+      password,
+    });
+    console.log(`Нового користувача ${new_person.email} додано`);
+    await new_person.save();
   }
-
-  const new_person = new db_user({
-    email,
-    age,
-    avatar,
-    job_title,
-    description,
-    gender,
-    password,
-  });
-
-  await new_person.save();
 
   return res.redirect("/all_users");
 });

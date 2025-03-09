@@ -3,51 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login Form</title>
     <link rel="stylesheet" href="/css/login.css" />
   </head>
   <body>
     <form action="/login" method="POST">
+      <h1>Login</h1>
       <input
         type="email"
         name="email"
         placeholder="Enter your email"
         required
       />
-      <br />
-      <br />
       <input
         type="text"
         pattern="\d*"
         name="age"
         min="18"
         max="100"
-        placeholder="enter your age"
+        placeholder="Enter your age"
         required
       />
-      <br />
-      <br />
-      <input type="text" name="job_title" placeholder="enter your job title" />
-      <br />
-      <br />
+      <input type="text" name="job_title" placeholder="Enter your job title" />
       <textarea
         name="description"
         cols="30"
-        rows="10"
-        id=""
+        rows="3"
         placeholder="Your description"
       ></textarea>
-      <br />
-      <br />
-      <label>Choose your gender:</label><br />
 
-      <input type="radio" id="male" name="gender" value="Male" required />
-      <label for="male">Male</label><br />
+      <label>Choose your gender:</label>
+      <div class="gender-container">
+        <label for="male">
+          <input type="radio" id="male" name="gender" value="Male" required />
+          Male
+        </label>
 
-      <input type="radio" id="female" name="gender" value="Female" />
-      <label for="female">Female</label><br />
-      <br />
-      <br />
+        <label for="female">
+          <input type="radio" id="female" name="gender" value="Female" />
+          Female
+        </label>
+      </div>
 
       <input
         type="password"
@@ -55,14 +51,12 @@
         placeholder="Enter your password"
         required
       />
-      <br />
-      <br />
-      <button type="submit">Log in</button>
+
+      <div class="buttons">
+        <button type="submit">Log in</button>
+        <a href="/add_new_user"><button type="button">Add New User</button></a>
+        <a href="/"><button type="button">Back to Home</button></a>
+      </div>
     </form>
-    <br />
-    <div><a href="/">повернення на головну сторінку</a></div>
-    <br />
-    <br />
-    <div><a href="/add_new_user">додати нового користувача</a></div>
   </body>
 </html>

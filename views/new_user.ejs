@@ -3,51 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>add_new_user</title>
+    <title>Add New User</title>
     <link rel="stylesheet" href="css/new_user.css" />
   </head>
   <body>
     <form action="/add_new_user" method="POST">
+      <h1>Registration</h1>
+
       <input
         type="email"
         name="email"
         placeholder="Enter your email"
         required
       />
-      <br />
-      <br />
+
       <input
         type="text"
         pattern="\d*"
         name="age"
         min="18"
         max="100"
-        placeholder="enter your age"
+        placeholder="Enter your age"
         required
       />
-      <br />
-      <br />
-      <input type="text" name="job_title" placeholder="enter your job title" />
-      <br />
-      <br />
+
+      <input type="text" name="job_title" placeholder="Enter your job title" />
+
       <textarea
         name="description"
         cols="30"
-        rows="10"
-        id=""
+        rows="3"
         placeholder="Your description"
       ></textarea>
-      <br />
-      <br />
-      <label>Choose your gender:</label><br />
 
-      <input type="radio" id="male" name="gender" value="Male" required />
-      <label for="male">Male</label><br />
+      <label>Choose your gender:</label>
+      <div class="gender-container">
+        <label for="male">
+          <input type="radio" id="male" name="gender" value="Male" required />
+          Male
+        </label>
 
-      <input type="radio" id="female" name="gender" value="Female" />
-      <label for="female">Female</label><br />
-      <br />
-      <br />
+        <label for="female">
+          <input type="radio" id="female" name="gender" value="Female" />
+          Female
+        </label>
+      </div>
 
       <input
         type="password"
@@ -55,9 +55,13 @@
         placeholder="Enter your password"
         required
       />
-      <br />
-      <br />
-      <button type="submit">Register</button>
+
+      <div class="buttons">
+        <button type="submit">Register</button>
+        <button type="button" onclick="window.location.href='/'">
+          Back to Home
+        </button>
+      </div>
     </form>
   </body>
 </html>

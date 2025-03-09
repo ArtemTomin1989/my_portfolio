@@ -70,18 +70,47 @@ td:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+/* Стилі для кнопки */
+button,
 a {
   font-size: 1.2rem;
   color: #ffffff;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: 2px solid #ffffff;
   border-radius: 50px;
+  background: transparent;
+  cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   margin-top: 20px;
+  display: inline-block;
+  text-align: center;
 }
 
+button:hover,
 a:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
+}
+
+/* Забираємо стандартний стиль кнопки */
+button {
+  outline: none;
+  border: 2px solid #ffffff;
+}
+
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  button,
+  a {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }

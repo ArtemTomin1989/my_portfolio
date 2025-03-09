@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="/css/all_users.css" />
   </head>
   <body>
-    <h1>Список усіх користувачів</h1>
-    <table border="1" cellspacing="0" cellpadding="5">
+    <h1>All Users</h1>
+
+    <table>
       <thead>
         <tr>
           <th>Email</th>
-          <th>Вік</th>
-          <th>Робота</th>
-          <th>Опис</th>
-          <th>Стать</th>
+          <th>Age</th>
+          <th>Job title</th>
+          <th>Description</th>
+          <th>Gender</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -26,12 +28,25 @@
           <td><%= user.job_title %></td>
           <td><%= user.description %></td>
           <td><%= user.gender %></td>
+          <td>
+            <!-- <form action="/delete-user" method="POST">
+              <input type="hidden" name="email" value="<%= user.email %>" /> -->
+            <button type="submit">Delete</button>
+            <!-- </form> -->
+          </td>
         </tr>
-        <% }); %> <%} else { %> No users yet <%} %>
+        <% }); %> <% } else { %>
+        <tr class="no-users">
+          <td colspan="6">No users yet</td>
+        </tr>
+        <% } %>
       </tbody>
     </table>
-    <br />
-    <a href="/">На головну</a>
-    <script src="/script.js"></script>
+
+    <div class="buttons">
+      <button type="button" onclick="window.location.href='/'">
+        Back to Home
+      </button>
+    </div>
   </body>
 </html>
