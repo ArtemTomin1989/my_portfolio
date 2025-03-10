@@ -11,7 +11,7 @@ const array = db.users;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "public"));
 app.use(express.static(__dirname + "views")); // папка для фронтенду
 
 app.engine("ejs", require("ejs").renderFile);
