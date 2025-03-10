@@ -11,11 +11,12 @@ const array = db.users;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static(__dirname + "public"));
-app.use(express.static(__dirname + "views")); // папка для фронтенду
-
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
+
+app.use(express.static(__dirname + "public"));
+app.use(express.static(__dirname + "views")); // папка для фронтенду
+
 
 // '/' - дістати щось з початкової сторінки. req i res - отримання інфи з фронту і відправляння інфи на фронт
 
