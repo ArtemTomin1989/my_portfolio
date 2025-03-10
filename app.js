@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express"); //дістаємо експрес з package.json
 const mongoose = require("mongoose");
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const db_user = require("./models/User");
 const db = require("./db"); //звертаємося до файлу бази даних, для екстракту масиву з об'єктами
 const app = express(); //присвоюємо змінній виклик експрес
@@ -16,7 +16,6 @@ app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + "public"));
 app.use(express.static(__dirname + "views")); // папка для фронтенду
-
 
 // '/' - дістати щось з початкової сторінки. req i res - отримання інфи з фронту і відправляння інфи на фронт
 
