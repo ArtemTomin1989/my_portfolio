@@ -14,8 +14,15 @@ app.use(express.json());
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
 
-app.use(express.static(__dirname + "public"));
 app.use(express.static(__dirname + "/views")); // папка для фронтенду
+app.use(
+  "/views/css",
+  (req, res, next) => {
+    res.type("text/css");
+    next();
+  },
+  express.static(__dirname + "/views/css")
+);
 
 // '/' - дістати щось з початкової сторінки. req i res - отримання інфи з фронту і відправляння інфи на фронт
 
