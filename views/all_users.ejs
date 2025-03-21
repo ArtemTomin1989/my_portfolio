@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Усі користувачі</title>
+    <title>All users</title>
     <link rel="stylesheet" href="/css/all_users.css" />
   </head>
   <body>
@@ -29,10 +29,10 @@
           <td><%= user.description %></td>
           <td><%= user.gender %></td>
           <td>
-            <!-- <form action="/delete-user" method="POST">
-              <input type="hidden" name="email" value="<%= user.email %>" /> -->
-            <button type="submit">Delete</button>
-            <!-- </form> -->
+            <form action="/delete_user" method="POST">
+              <input type="hidden" name="id" value="<%= user.id %>" />
+              <button type="submit">Delete</button>
+            </form>
           </td>
         </tr>
         <% }); %> <% } else { %>

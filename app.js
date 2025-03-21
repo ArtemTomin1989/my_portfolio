@@ -15,7 +15,7 @@ app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
-app.use(express.static("views")); // папка для фронтенду
+app.use(express.static(__dirname + "views")); // папка для фронтенду
 
 // '/' - дістати щось з початкової сторінки. req i res - отримання інфи з фронту і відправляння інфи на фронт
 
@@ -181,6 +181,12 @@ app.get("/all_users", async function (req, res) {
   const users = await db_user.find(); //Використовуючи find(), ти можеш отримати всіх користувачів із бази даних.
 
   return res.render("all_users.ejs", { users });
+});
+
+app.post("/delete_user", async function (req, res) {
+  const user_id = req.body.id;
+  const deleted_user = await db_user.deleteOne({ _id: user_id }); // при delete не треба робити await deleted_user.save();
+  return res.redirect("/all_users");
 });
 
 const start = async () => {
