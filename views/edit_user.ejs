@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit_user</title>
+    <link rel="stylesheet" href="/css/edit_user.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Edit</h1>
+
+      <table>
+        <form action="/edit_user/<%= edited_user.id %> " method="POST">
+          <tr>
+            <th>Email</th>
+            <td>
+              <input
+                type="text"
+                name="new_email"
+                value="<%= edited_user.email %>"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <td>
+              <input
+                type="text"
+                pattern="\d*"
+                name="new_age"
+                min="18"
+                max="100"
+                placeholder="edit age"
+                value="<%= edited_user.age %>"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Job Title</th>
+            <td>
+              <input
+                type="text"
+                name="new_job_title"
+                value="<%= edited_user.job_title %>"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td>
+              <textarea
+                name="new_description"
+                cols="30"
+                rows="10"
+                placeholder="Cnange your description"
+                required
+              >
+              <%= edited_user.description %></textarea
+              >
+            </td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td><%= edited_user.gender %></td>
+          </tr>
+          <tr>
+            <th>Password</th>
+            <td>
+              <input
+                type="password"
+                name="new_password"
+                placeholder="enter your new password"
+                value="<%= edited_user.password %>"
+                required
+              />
+            </td>
+          </tr>
+          <button type="submit">Edit</button>
+        </form>
+      </table>
+
+      <br />
+      <a href="/all_users">Back</a>
+    </div>
+  </body>
+</html>

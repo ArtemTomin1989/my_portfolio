@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All users</title>
-    <link rel="stylesheet" href="./css/all_users.css" />
+    <link rel="stylesheet" href="/css/all_users.css" />
   </head>
   <body>
     <h1>All Users</h1>
@@ -33,6 +33,9 @@
               <input type="hidden" name="id" value="<%= user.id %>" />
               <button type="submit">Delete</button>
             </form>
+            <a href="/edit_user/<%=user.id %>"
+              ><button class="edit" type="button">Edit</button></a
+            >
           </td>
         </tr>
         <% }); %> <% } else { %>
@@ -44,9 +47,7 @@
     </table>
 
     <div class="buttons">
-      <button type="button" onclick="window.location.href='/'">
-        Back to Home
-      </button>
+      <a href="/"><button type="button">Back to Home</button></a>
     </div>
   </body>
 </html>

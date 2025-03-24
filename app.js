@@ -196,6 +196,29 @@ app.post("/delete_user", async function (req, res) {
   return res.redirect("/all_users");
 });
 
+app.get("/edit_user/:id", async function (req, res) {
+  const user_id = req.params.id;
+  const edited_user = await db_user.findOne({ _id: user_id });
+  res.render("edit_user.ejs", { edited_user });
+});
+
+app.post("/edit_user/:id", async function (req, res) {
+  const { new_email, new_age, new_job_title, new_description, new_password } =
+    req.body;
+
+  const user_id = req.params.id;
+
+  const edited_user = await db_user.findByIdAndUpdate(user_id, {
+    email: new_email,
+    age: new_age,
+    job_title: new_job_title,
+    description: new_description,
+    password: new_password,
+  });
+  await edited_user.save();
+  return res.redirect("/all_users");
+});
+
 const start = async () => {
   await mongoose.connect(`${process.env.DB_URL}`);
 
